@@ -1,34 +1,11 @@
-package main
+package count
 
-import (
-	"bufio"
-	"datafile/datafile"
-	"fmt"
-	"log"
-	"os"
-	"strings"
-)
+func Count(names []string) (map[string]int, error) {
+	voteCount := make(map[string]int, 0)
 
-func main() {
-	fmt.Println("please enter the file path: ")
-
-	reader := bufio.NewReader(os.Stdin)
-
-	bytes, err := reader.ReadBytes('\n')
-
-	if err != nil {
-		log.Fatal(err)
+	for _, name := range names {
+		voteCount[name] = voteCount[name] + 1
 	}
 
-	fileName := string(bytes)
-
-	fileName = strings.Trim(fileName, "\n")
-
-	lines, err := datafile.GetString(fileName)
-
-	if err == nil {
-		fmt.Println(lines)
-	} else {
-		log.Fatal(err)
-	}
+	return voteCount, nil
 }

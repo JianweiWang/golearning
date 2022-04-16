@@ -5,6 +5,10 @@ import (
 	"os"
 )
 
+/*
+read strings from file, return string slice or error.
+*/
+
 func GetString(filepath string) ([]string, error) {
 	file, err := os.Open(filepath)
 	if err != nil {
