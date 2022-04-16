@@ -1,41 +1,15 @@
 package main
 
 import (
-	"bufio"
-	"datafile/golearning/count"
-	"datafile/golearning/datafile"
+	"datafile/golearning/magazine"
 	"fmt"
-	"log"
-	"os"
-	"strings"
 )
 
 func main() {
-	fmt.Println("please enter the file path: ")
-
-	reader := bufio.NewReader(os.Stdin)
-
-	bytes, err := reader.ReadBytes('\n')
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fileName := string(bytes)
-
-	fileName = strings.Trim(fileName, "\n")
-
-	lines, err := datafile.GetString(fileName)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	votes, err := count.Count(lines)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Printf("%v", votes)
+	sub := magazine.Subscriber{Name: "james", Rate: float64(0.8), Active: true}
+	emp := magazine.Employee{Name: "jhon", Salary: float64(300)}
+	addr := magazine.Address{Street: "liangzhu", City: "hangzhou", State: "zhejiang", PostCode: "0571"}
+	fmt.Printf("%#v\n", sub)
+	fmt.Printf("%#v\n", emp)
+	fmt.Printf("%#v\n", addr)
 }
